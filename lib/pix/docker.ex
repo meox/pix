@@ -155,7 +155,7 @@ defmodule Pix.Docker do
 
   defp run_opts_git_ssh_command(key_paths) do
     identity_flags = Enum.map_join(key_paths, " ", &"-i #{&1}")
-    [env: "GIT_SSH_COMMAND=ssh #{identity_flags} -o StrictHostKeyChecking=no"]
+    [env: "GIT_SSH_COMMAND=ssh #{identity_flags} -o IdentitiesOnly=yes -o StrictHostKeyChecking=no"]
   end
 
   @spec run_opts_docker_outside_of_docker :: opts()
